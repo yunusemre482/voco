@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 
 const menuSchema = new mongoose.Schema({
-  restaurantId: {
+  restaurant: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Restaurant'
   },
   name: String,
-  items: [
-    {
-      itemName: String,
-      price: Number,
-      description: String
-    }
-  ]
-},
-  {
-    timestamps: true,
-  });
+  products: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product'
+  }]
+
+}, {
+  timestamps: true,
+});
 
 const Menu = mongoose.model('Menu', menuSchema);
 

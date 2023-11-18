@@ -3,6 +3,7 @@ const { PORT } = require('./constants/environment');
 const configureApp = require('./config');
 const connectDB = require('./config/db.config');
 const initializeRoutes = require('./routes');
+const { generateAndSaveMockData } = require('./utils');
 
 
 const startServer = async () => {
@@ -20,6 +21,10 @@ const startServer = async () => {
 
     // Initialize routes
     initializeRoutes(app);
+    // add random avrage rating to restaurants 
+
+
+    //generateAndSaveMockData();
 };
 
 // Start the server

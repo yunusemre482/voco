@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const authRoutes = require('./auth.routes');
+const restaurantRoutes = require('./restaurant.routes');
 const { API_PREFIX } = require('../constants/environment');
 
 
@@ -21,9 +22,12 @@ function initial(app) {
     const routes = new Router();
 
     routes.use('/auth', authRoutes);
+    routes.use('/restaurants', restaurantRoutes);
 
     app.use(`${API_PREFIX}`, routes);
 
+
+    // Check if the route does not  exists and return 404 
     app.all('*', (req, res, next) => {
         return res.status(404).json({
             message: `Can't find ${req.originalUrl} on this server!`,
