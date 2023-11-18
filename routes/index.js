@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const authRoutes = require('./auth.routes');
 const restaurantRoutes = require('./restaurant.routes');
+const userRoutes = require('./user.routes');
+const orderRoutes = require('./order.routes');
 const { API_PREFIX } = require('../constants/environment');
 
 
@@ -22,8 +24,9 @@ function initial(app) {
     const routes = new Router();
 
     routes.use('/auth', authRoutes);
+    routes.use('/orders', orderRoutes);
     routes.use('/restaurants', restaurantRoutes);
-
+    routes.use('/users', userRoutes);
     app.use(`${API_PREFIX}`, routes);
 
 
